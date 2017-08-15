@@ -3,7 +3,7 @@ const express = require('express');
 const app = express();
 const http = require('http').Server(app);
 const io = require('socket.io')(http);
-const port = 'ec2-35-176-121-39.eu-west-2.compute.amazonaws.com' || 3000;
+const port = process.env.PORT || 3000;
 
 app.use(express.static(__dirname + '/public'));
 
