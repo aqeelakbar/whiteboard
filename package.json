@@ -1,5 +1,5 @@
 {
-  "name": "colour together",
+  "name": "colour-together",
   "version": "1.0.0",
   "description": "A colouring exercise experience with others using socket.io",
   "main": "index.js",
