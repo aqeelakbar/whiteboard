@@ -29,12 +29,12 @@ body {
   background-repeat: no-repeat;
   background-size: 120%;
   height: 87%;
-  width: 80%;
+  width: 81%;
   position: absolute;
-  left: 93px;
+  left: 10.5%;
   right: 0;
   bottom: 0;
-  top: 50px;
+  top: 3%;
 }
 
 .colors {
@@ -42,6 +42,7 @@ body {
 }
 
 .color {
+  border: 1px solid;
   display: inline-block;
   height: 62px;
   width: 62px;
