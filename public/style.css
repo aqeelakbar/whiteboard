@@ -10,7 +10,13 @@
 html, body {
   height: 100%;
   margin: 0;
+  overflow: hidden;
   padding: 0;
+}
+
+body {
+  background: url('/images/background.jpeg') center center no-repeat;
+  background-size: 100%;
 }
 
 /**
@@ -18,27 +24,32 @@ html, body {
  */
 
 .whiteboard {
-  height: 100%;
-  width: 100%;
+  background-image: url('images/colouring_image.jpg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 120%;
+  height: 87%;
+  width: 80%;
   position: absolute;
-  left: 0;
+  left: 93px;
   right: 0;
   bottom: 0;
-  top: 0;
+  top: 50px;
 }
 
 .colors {
-  position: fixed;
+
 }
 
 .color {
   display: inline-block;
-  height: 48px;
-  width: 48px;
+  height: 62px;
+  width: 62px;
+  position: absolute;
+  right: 0;
 }
 
-.color.black { background-color: black; }
-.color.red { background-color: red; }
-.color.green { background-color: green; }
-.color.blue { background-color: blue; }
-.color.yellow { background-color: yellow; }
+.color.black {top:47%;}
+.color.red {top:77%;}
+.color.green {top:62%;}
+.color.blue {top:92%;}
