@@ -9,6 +9,7 @@
 
 html, body {
   height: 529px;
+  height: 100%;
   margin: 0;
   overflow: hidden;
   padding: 0;
@@ -30,16 +31,27 @@ body {
   background-repeat: no-repeat;
   background-size: 120%;
   height: 400px;
-  width: 769px;
+  overflow: hidden;
   position: absolute;
   left: 10.5%;
   right: 0;
   bottom: 0;
   top: 14%;
+  width: 769px;
 }
 
-.colors {
+.parallel {
+  height:100%;
+  width:100%;
+  background-color: black;
+  color: white;
+}
 
+.parallel p {
+  font-size: 40px;
+  padding:50% 5%;
+  text-align: center;
+  text-transform: uppercase;
 }
 
 .color {
@@ -54,3 +66,21 @@ body {
 .color.red {top:69%;}
 .color.green {top:59%;}
 .color.blue {top:82%;}
+
+@media (orientation:landscape) {
+  .parallel {
+    display: none;
+  }
+  .whiteboard {
+    display: block;
+  }
+}
+
+@media (orientation:portrait) {
+  .whiteboard {
+    display: none;
+  }
+  .parallel {
+    display: block;
+  }
+}

@@ -14,7 +14,7 @@
 
   canvas.addEventListener('touchstart', onMouseDown, false);
   canvas.addEventListener('touchend', onMouseUp, false);
-  // canvas.addEventListener('touchend', onMouseUp, false);
+  canvas.addEventListener('touchcancel', onMouseUp, false);
   canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
 
   for (var i = 0; i < colors.length; i++){
@@ -52,24 +52,26 @@
 
   function onMouseDown(e){
     drawing = true;
+    console.log(e.changedTouches[0]);
     var touch = e.changedTouches[0];
-    current.x = touch.pageX;
-    current.y = touch.pageY;
+    current.x = touch.clientX;
+    current.y = touch.clientY;
   }
 
   function onMouseUp(e){
     if (!drawing) { return; }
     drawing = false;
     var touch = e.changedTouches[0];
-    drawLine(current.x, current.y, touch.pageX, touch.pageY, current.color, true);
+    drawLine(current.x, current.y, touch.clientX, touch.clientY, current.color, true);
   }
 
   function onMouseMove(e){
+    console.log(e.getCoalescedEvents);
     if (!drawing) { return; }
     var touch = e.changedTouches[0];
-    drawLine(current.x, current.y, touch.pageX, touch.pageY, current.color, true);
-    current.x = touch.pageX;
-    current.y = touch.pageY;
+    drawLine(current.x, current.y, touch.clientX, touch.clientY, current.color, true);
+    current.x = touch.clientX;
+    current.y = touch.clientY;
   }
 
   function onColorUpdate(e){
