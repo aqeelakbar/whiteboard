@@ -12,10 +12,10 @@
   };
   var drawing = false;
 
-  canvas.addEventListener('mousedown', onMouseDown, false);
-  canvas.addEventListener('mouseup', onMouseUp, false);
-  canvas.addEventListener('mouseout', onMouseUp, false);
-  canvas.addEventListener('mousemove', throttle(onMouseMove, 10), false);
+  canvas.addEventListener('touchstart', onMouseDown, false);
+  canvas.addEventListener('touchend', onMouseUp, false);
+  // canvas.addEventListener('touchend', onMouseUp, false);
+  canvas.addEventListener('touchmove', throttle(onMouseMove, 10), false);
 
   for (var i = 0; i < colors.length; i++){
     colors[i].addEventListener('click', onColorUpdate, false);
@@ -32,9 +32,10 @@
     context.moveTo(x0, y0);
     context.lineTo(x1, y1);
     context.strokeStyle = color;
-    context.lineWidth = 2;
+    context.lineWidth = 10;
     context.stroke();
     context.closePath();
+    context.globalAlpha = 0.2;
 
     if (!emit) { return; }
     var w = canvas.width;
@@ -51,21 +52,24 @@
 
   function onMouseDown(e){
     drawing = true;
-    current.x = e.clientX;
-    current.y = e.clientY;
+    var touch = e.changedTouches[0];
+    current.x = touch.pageX;
+    current.y = touch.pageY;
   }
 
   function onMouseUp(e){
     if (!drawing) { return; }
     drawing = false;
-    drawLine(current.x, current.y, e.clientX, e.clientY, current.color, true);
+    var touch = e.changedTouches[0];
+    drawLine(current.x, current.y, touch.pageX, touch.pageY, current.color, true);
   }
 
   function onMouseMove(e){
     if (!drawing) { return; }
-    drawLine(current.x, current.y, e.clientX, e.clientY, current.color, true);
-    current.x = e.clientX;
-    current.y = e.clientY;
+    var touch = e.changedTouches[0];
+    drawLine(current.x, current.y, touch.pageX, touch.pageY, current.color, true);
+    current.x = touch.pageX;
+    current.y = touch.pageY;
   }
 
   function onColorUpdate(e){
