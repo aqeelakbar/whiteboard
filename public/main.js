@@ -35,6 +35,7 @@
     context.lineWidth = 10;
     context.stroke();
     context.closePath();
+    context.globalAlpha = 0.2;
 
     if (!emit) { return; }
     var w = canvas.width;
